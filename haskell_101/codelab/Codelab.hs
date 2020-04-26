@@ -84,23 +84,23 @@ codelab = error "SOMETHING IS NOT IMPLEMENTED!"
 -}
 
 add :: Int -> Int -> Int
-add x y = codelab
+add x y = x + y
 
 subtract :: Int -> Int -> Int
-subtract x y = codelab
+subtract x y = x - y
 
 double :: Int -> Int
-double x = codelab
+double x = x * 2
 
 multiply :: Int -> Int -> Int
-multiply x y = codelab
+multiply x y = x * y
 
 -- Note that Haskell is strict about types even for basic integral types.
 -- Int is never automatically converted to Double.  But you can use
 -- fromIntegral to convert from any integral type to any number type.
 
 divide :: Int -> Int -> Double
-divide x y = codelab
+divide x y = fromIntegral x / fromIntegral y
 
 -- Remember that you can use if/then/else:
 --
@@ -111,7 +111,7 @@ divide x y = codelab
 -- even relatively small numbers.
 
 factorial :: Integer -> Integer
-factorial n = codelab
+factorial n = if n == 1 then n else n * factorial (n - 1)
 
 -- Expressions can be assigned names, called "bindings", using the
 -- following syntax:
@@ -125,9 +125,7 @@ factorial n = codelab
 --   https://en.wikipedia.org/wiki/Greatest_common_divisor#Using_Euclid's_algorithm
 
 gcd :: Int -> Int -> Int
-gcd a b = codelab
-
-
+gcd a b = if a `mod` b == 0 then b else gcd b $ a `mod` b
 
 
 
@@ -150,7 +148,7 @@ data Minutes = Minutes Int
 --     div a b
 
 hours :: Minutes -> Int
-hours m = codelab
+hours (Minutes m) = m `div` 60
 
 -- In case you need some mathematical functions, you can use
 --
@@ -163,7 +161,7 @@ hours m = codelab
 -- example, for 15 and 25, distance is 10.
 
 timeDistance :: Minutes -> Minutes -> Minutes
-timeDistance m1 m2 = codelab
+timeDistance (Minutes m1, Minutes m2) = Minutes $ abs $ m2 - m1
 
 type Point = (Int, Int)
 
