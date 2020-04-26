@@ -197,7 +197,8 @@ pointDistance (p1x, p1y) (p2x, p2y) = sqrt $ fromIntegral (p2x - p1x) ** 2 + fro
 -- null tells you whether a list is empty or not
 
 null :: [a] -> Bool
-null fixme = codelab
+null [] = True
+null _ = False
 
 
 -- head returns the first element of the list.
@@ -206,17 +207,22 @@ null fixme = codelab
 
 head :: [a] -> a
 head []    = error "head: empty list"
-head fixme = codelab
+head (x:_) = x
 
 
 -- tail returns everything but the first element.
 -- If the list is empty it panics
 
 tail :: [a] -> [a]
-tail = codelab
+tail [] = error "tail: empty list"
+tail (_:xs) = xs
 
+-- Did my myLast for fun
 
-
+myLast :: [a] -> a
+myLast [] = error "myLast: empty list"
+myLast [x] = x
+myLast (x:xs) = myLast xs
 
 
 {- #####################################################################
