@@ -237,21 +237,24 @@ myLast (x:xs) = myLast xs
 -- Do you remember it from the slides?
 
 length :: [a] -> Int
-length l = codelab
+length [] = 0
+length (x:xs) = 1 + length xs
 
 
 -- "and" returns True if all the boolean values in the list are True.
 -- What do you think it returns for an empty list?
 
 and :: [Bool] -> Bool
-and l = codelab
+and [] = True
+and (x:xs) = x && and xs
 
 
 -- "or" returns True if at least one value in the list is True.
 -- What do you think it returns for an empty list?
 
 or :: [Bool] -> Bool
-or l = codelab
+or [] = False
+or (x:xs) = x || or xs
 
 
 -- "(++)" is the concatenation operator.  To concatenate two linked lists
