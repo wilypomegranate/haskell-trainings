@@ -135,7 +135,7 @@ gcd a b = if a `mod` b == 0 then b else gcd b $ a `mod` b
    Now that we can define simple data structures, let's try using them.
 -}
 
-data Minutes = Minutes Int
+newtype Minutes = Minutes Int
 
 -- Integer division is called "div".  If you want, you can use a function
 -- of two arguments as an infix operator, by surrounding it with
@@ -161,7 +161,7 @@ hours (Minutes m) = m `div` 60
 -- example, for 15 and 25, distance is 10.
 
 timeDistance :: Minutes -> Minutes -> Minutes
-timeDistance (Minutes m1, Minutes m2) = Minutes $ abs $ m2 - m1
+timeDistance (Minutes m1) (Minutes m2) = Minutes $ abs $ m2 - m1
 
 type Point = (Int, Int)
 
@@ -177,7 +177,8 @@ type Point = (Int, Int)
 --     f (x, y) = abs x + abs y
 
 pointDistance :: Point -> Point -> Double
-pointDistance p1 p2 = codelab
+pointDistance (p1x, p1y) (p2x, p2y) = sqrt $ fromIntegral (p2x - p1x) ** 2 + fromIntegral (p2y - p1y) ** 2
+
 
 
 {- #####################################################################
