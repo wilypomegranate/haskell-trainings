@@ -261,8 +261,11 @@ or (x:xs) = x || or xs
 -- you have to chain the second one at the end of the first one.
 
 (++) :: [a] -> [a] -> [a]
-l1 ++ l2 = codelab
-
+-- (++) (x:[]) (y:ys) = x: y: ys
+-- (++) (x:xs) (y:[]) = x: xs
+(++) (x:xs) y = x: head xs : (++) (tail xs) y
+(++) [] (y:ys) = y: ys
+(++) x [] = x
 
 
 
