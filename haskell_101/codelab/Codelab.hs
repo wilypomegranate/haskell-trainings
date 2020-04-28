@@ -314,8 +314,8 @@ map f (a:as) = f a : map f as
 filter :: (a -> Bool) -> [a] -> [a]
 filter _ [] = []
 filter f (x:xs)
-  | codelab   = codelab
-  | otherwise = codelab
+  | f x   = x : filter f xs
+  | otherwise = filter f xs
 
 
 -- foldl
