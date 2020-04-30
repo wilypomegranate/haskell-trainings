@@ -322,16 +322,16 @@ filter f (x:xs)
 -- foldl (-) 0 [1,2,3,4]   ==   (((0 - 1) - 2) - 3) - 4   ==   -10
 
 foldl :: (a -> x -> a) -> a -> [x] -> a
-foldl _ a []     = codelab
-foldl f a (x:xs) = codelab
+foldl _ a []     = a
+foldl f a (x:xs) = foldl f (f a x) xs
 
 
 -- foldr
 -- foldr (-) 0 [1,2,3,4]   ==   1 - (2 - (3 - (4 - 0)))   ==    -2
 
 foldr :: (x -> a -> a) -> a -> [x] -> a
-foldr _ a []     = codelab
-foldr f a (x:xs) = codelab
+foldr _ a []     = a
+foldr f a (x:xs) = foldr f (f x a) xs
 
 
 
