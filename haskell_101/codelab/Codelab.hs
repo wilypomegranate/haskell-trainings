@@ -237,8 +237,9 @@ myLast (x:xs) = myLast xs
 -- Do you remember it from the slides?
 
 length :: [a] -> Int
-length [] = 0
-length (x:xs) = 1 + length xs
+-- length [] = 0
+-- length (x:xs) = 1 + length xs
+length xs = foldr(\x -> (+1)) 0 xs
 
 
 -- "and" returns True if all the boolean values in the list are True.
