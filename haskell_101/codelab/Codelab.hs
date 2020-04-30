@@ -331,7 +331,7 @@ foldl f a (x:xs) = foldl f (f a x) xs
 
 foldr :: (x -> a -> a) -> a -> [x] -> a
 foldr _ a []     = a
-foldr f a (x:xs) = foldr f (f x a) xs
+foldr f a (x:xs) = f x $ foldr f a xs
 
 
 
